@@ -5,7 +5,7 @@ function App() {
   const [A, setA] = useState();
   const [B, setB] = useState();
   const [result, setResult] = useState();
-  const [err,setErr] = useState("");
+  const [err, setErr] = useState("");
   /* You will need some function to handle the key pressed and button events */
   const onA = (e) => {
     setA(e.target.value);
@@ -14,15 +14,12 @@ function App() {
     setB(e.target.value);
   };
   const onCompute = () => {
-    if (A && B) {
-      if(typeof parseInt(A) == 'number' && typeof parseInt(B) == 'number'){
-        setResult(parseInt(A) + parseInt(B));
-      }
-      else{
-        setErr("A and B must be numbers");
-      }
+    if (typeof parseInt(A) == "number" && typeof parseInt(B) == "number") {
+      setResult(parseInt(A) + parseInt(B));
+      console.log("ok");
     } else {
-      setResult("Error");
+      setErr("A and B must be numbers");
+      setResult("A and B must be numbers");
     }
   };
   /* You will need to display the result of the computation */
@@ -39,7 +36,13 @@ function App() {
       <label>A + B =</label>
 
       {/* When Compute buton is clicked, this input display the sum of the 2 numbers, or the error message in RED */}
-      <input disabled value={result}/>
+      {/* <input disabled value={err?err:result} className={err?"error":""}/> */}
+      <input
+        type={err ? "text" : "number"}
+        disabled
+        value={err ? err : result}
+        className={err ? "error" : ""}
+      />
       <button onClick={onCompute}>Compute</button>
     </main>
   );
