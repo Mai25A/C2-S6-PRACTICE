@@ -9,6 +9,8 @@ function App() {
     // Complete this code when we click on Sunny Time
     console.log("sunny");
     setIsRaining(false);
+    getBackgroundColor();
+    getTitle();
   }
 
   function onRainClick() {
